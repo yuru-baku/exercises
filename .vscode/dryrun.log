@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/k.reehsprinteins.com/SEE/exercises'
+make: Leaving directory `/Users/k.reehsprinteins.com/SEE/exercises'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
