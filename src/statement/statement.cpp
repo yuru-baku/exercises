@@ -17,16 +17,21 @@ Statement::Statement(const nlohmann::json &invoice, const nlohmann::json &plays)
   for (auto &performance : performances) { performance.setPlay(plays[performance.playID]); }
 }
 
-std::string Statement::toString() const
+std::string Statement::perfsToString() const
 {
-  const auto preamble = std::format("Statement for {}\n", customer);
-  const auto items = std::accumulate(
+  return std::accumulate(
     performances.begin(), performances.end(), std::string{ " " }, [](const auto &lines, const auto &perf) {
       return std::format("{}\n {}", lines, perf.toString());
     });
-  const auto totalCostLine = std::format("Amount owed is {}\n", toDollar(totalCost()));
-  const auto totalCreditLine = std::format("You earned {} credits\n", totalCredit());
-  return std::format("{}{}{}{}", preamble, items, totalCostLine, totalCreditLine);
+}
+
+std::string Statement::toString() const
+{
+  const auto preamble = std::format("Statement for {}", customer);
+  const auto performanceLines = perfsToString();
+  const auto totalCostLine = std::format("Amount owed is {}", toDollar(totalCost()));
+  const auto totalCreditLine = std::format("You earned {} credits", totalCredit());
+  return std::format("{}\n{}\n{}\n{}\n", preamble, performanceLines, totalCostLine, totalCreditLine);
 }
 
 int Statement::totalCost() const
@@ -41,27 +46,4 @@ int Statement::totalCredit() const
     return perf.getCredits() + sum;
   });
 }
-/*
-std::string statement(const nlohmann::json &invoices, const nlohmann::json &plays)
-{
-
-
-  int totalAmount{ 0 };
-  int volumeCredits{ 0 };
-  const Statement stats(invoices, plays);
-  auto result = std::format("Statement for {}\n", std::string{ invoices[0]["customer"] });
-
-  for (const auto &performance : stats.performances) {
-    result += lineItem();
-    totalAmount += performance.getCost();
-    volumeCredits += performance.getCredits();
-  }
-
-  result += std::format("Amount owed is {}\n", toDollar(totalAmount));
-  result += std::format("You earned {} credits\n", volumeCredits);
-  return result;
-
-return "";
-}
- */
 }// namespace statement

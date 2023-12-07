@@ -9,8 +9,9 @@ int main()
   const nlohmann::json plays = nlohmann::json::parse(playsFile);
 
   std::ifstream invoicesFile("invoices.json");
-  const nlohmann::json invoices = nlohmann::json::parse(invoicesFile);
 
-  std::cout << statement::Statement(invoices, plays).toString();
+  const nlohmann::json invoices = nlohmann::json::parse(invoicesFile);
+  for (const auto &invoice : invoices) { std::cout << statement::Statement(invoice, plays).toString(); }
+
   return 0;
 }

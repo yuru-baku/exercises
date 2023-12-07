@@ -18,7 +18,8 @@ struct Statement
   int totalCredit() const;
 
 private:
-  std::string customer;
+  std::string perfsToString() const;
+   std::string customer;
   std::vector<Performance> performances;
 };
 }// namespace statement
