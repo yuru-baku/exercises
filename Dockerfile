@@ -1,4 +1,4 @@
-FROM gcc:5 #update
+FROM gcc:13.2
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN echo ${LD_LIBRARY_PATH}
 
 
 RUN chmod -R 777 .
-ENTRYPOINT [ "/app/entrypoint.sh" ]
+#ENTRYPOINT [ "/app/entrypoint.sh" ]
 
-# CMD ["sh","-c","make run"]
+CMD ["sh","-c","make run"]
 
