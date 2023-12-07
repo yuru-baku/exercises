@@ -1,6 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/k.reehsprinteins.com/SEE/exercises'
-make: Leaving directory `/Users/k.reehsprinteins.com/SEE/exercises'
+make: Entering directory `/Users/yuru/Development/exercises'
+g++ -std=c++11  -I /usr/include/jsoncpp -L /usr/lib -ljsoncpp main.cpp -o main.o && ./main.o
+make: Leaving directory `/Users/yuru/Development/exercises'
  
-make: *** No targets specified and no makefile found.  Stop.
-

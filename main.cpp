@@ -7,7 +7,7 @@
 #include <math.h>
 
 // install: jsoncpp http://macappstore.org/jsoncpp/
-// to run: g++ -std=c++11  -L /usr/local/lib -ljsoncpp tamash.cpp -o tamash.o && ./tamash.o
+// brew install jsoncpp
 
 using namespace std;
 
