@@ -35,7 +35,7 @@ int Performance::calculateComedyCost() const
 
 int Performance::getCost() const
 {
-  switch (audience) {
+  switch (genre) {
   case TRAGEDY:
     return calculateTragedyCost();
   case COMEDY:

@@ -81,6 +81,7 @@ function(
     )
   endif()
 
+set(WARNINGS_AS_ERRORS FALSE)
   if(WARNINGS_AS_ERRORS)
     message(TRACE "Warnings are treated as errors")
     list(APPEND CLANG_WARNINGS -Werror)

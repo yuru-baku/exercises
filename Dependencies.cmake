@@ -25,7 +25,7 @@ function(myproject_setup_dependencies)
   endif()
 
 if(NOT TARGET nlohmann_json::nlohmann_json)
-  cpmaddpackage("gh:nlohmann/json@3.10.5")
+  cpmaddpackage("gh:nlohmann/json@3.11.3")
 endif()
 
   if(NOT TARGET Catch2::Catch2WithMain)
